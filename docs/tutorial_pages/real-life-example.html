@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.640">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Simulations-for-Power-Analyses – real-life-example</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Simulations-for-Power-Analyses</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/definition.html" class="sidebar-item-text sidebar-link">Definition</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/basic-principles.html" class="sidebar-item-text sidebar-link">Basic principles</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/repeat.html" class="sidebar-item-text sidebar-link">Repetition</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/seed.html" class="sidebar-item-text sidebar-link">Setting the seed</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/sample-size-n.html" class="sidebar-item-text sidebar-link">Sample size <code>n</code></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/dry-rule.html" class="sidebar-item-text sidebar-link"><strong>D</strong>o not <strong>R</strong>epeat <strong>Y</strong>ourself - DRY rule</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/check-alpha.html" class="sidebar-item-text sidebar-link">Using simulations to check alpha</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/check-power.html" class="sidebar-item-text sidebar-link">Checking power through simulations</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/simulate-for-preregistration.html" class="sidebar-item-text sidebar-link">Simulating data to check or preregister code</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/general-structure.html" class="sidebar-item-text sidebar-link">General structure of a simulation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/limitations.html" class="sidebar-item-text sidebar-link">Limitations to simulations</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/real-life-example.html" class="sidebar-item-text sidebar-link active">Real life example</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#real-life-example" id="toc-real-life-example" class="nav-link active" data-scroll-target="#real-life-example">Real life example</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="real-life-example" class="level1">
+<h1>Real life example</h1>
+<p>This is a walk through one relatively simple simulation written to check whether a<br>
+generalized linear model on a contingency table of counts (poisson distribution) would provide the same results as a<br>
+generalized linear model with one line per observation and the occurence of the variable of interest coded as Yes/No (binomial distribution).</p>
+<p>I created this code while preparing my preregistration for a simple behavioral ecology experiment:<br>
+Methods for independently manipulating palatability and color in small insect prey (<a href="https://doi.org/10.1371/journal.pone.0231205">article</a>, <a href="https://osf.io/f8uk9?view_only=3943e7bb9c5f4effbf119ca5b062fe80">OSF preregistration</a>)</p>
+<p>The R script screenshoted below can be found in the folder <a href="./Ihle2020/glm_Freq_vs_YN.R">Ihle2020</a>.</p>
+<p><br></p>
+<p>This walk through will use the steps as defined in the page ‘<a href="../tutorial_pages/general-structure.html">general structure</a>’</p>
+<ol type="1">
+<li><p><strong>define sample sizes</strong> (within a dataset, and number of replicates), <strong>experimental design</strong> (fixed dataset structure, e.g.&nbsp;treatment groups, factors) and <strong>parameters</strong> that will need to vary (here, the strength of the effect)</p>
+<p><img src="../assets/define.png" width="1000"><br>
+<br></p></li>
+<li><p><strong>generate data</strong> (here, using <code>sample()</code> and the probabilities defined in step 1 and format it in two different ways to accomodate the two statistical tests to be compared.</p>
+<p><img src="../assets/generate.png" width="1000"><br>
+<br></p></li>
+<li><p><strong>run the statistical test and save the parameter estimate of interest for that iteration</strong>. Here, this is done for both statistical tests to be compared.</p>
+<p><img src="../assets/test.png" width="1000"><br>
+<br></p></li>
+<li><p><strong>replicate</strong> step 2 (data simulation) and 3 (data analyses) to get the distribution of the parameter estimates by wrapping these steps in a function</p>
+<p>definition of the function at the beginning: <br> <img src="../assets/replicate1.png" width="800"><br>
+<br> output returned from the function at the end:<br>
+<br> <img src="../assets/replicate2.png" width="1000"><br>
+<br> replicate the function <code>nrep</code> number of times. Here <code>pbreplicate</code> is used to provide a bar of progress for R to run this command.<br>
+<br> <img src="../assets/replicate3.png" width="1000"><br>
+<br></p></li>
+<li><p><strong>explore the parameter space</strong>. Here, vary the probabilities of sampling between 0 and 1 depending on the treatment group category.</p>
+<p><img src="../assets/explore.png" width="1000"><br>
+<br></p></li>
+<li><p><strong>analyze and interpret the combine results of many simulations</strong>. In this case, the results of the two models were qualitatively the same (comparison of results for a few simulations), and both models gave the same expected 5% false positive results when no effect were simulated. Varying the effect (the probability of sampling 0 or 1 depending on the experimental treatment) allowed to find the minimum effect size for which the number of positive results is over 80% of the tests.</p>
+<p><img src="../assets/conclude.png" width="1000"><br>
+<br></p></li>
+</ol>
+<hr>
+<p><a href="../tutorial_pages/limitations.html">Previous</a> | <a href="../tutorial_pages/resources.html">Next</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,34 @@
+project:
+  type: website
+  output-dir: docs
+website:
+  title: "Simulations-for-Power-Analyses"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - tutorial_pages/definition.md
+      - tutorial_pages/purposes.md
+      - tutorial_pages/basic-principles.md
+      - tutorial_pages/random-numbers-generators.md
+      - tutorial_pages/repeat.md
+      - tutorial_pages/seed.md
+      - tutorial_pages/sample-size-n.md  
+      - tutorial_pages/number-of-simulations-nrep.md 
+      - tutorial_pages/dry-rule.md
+      - tutorial_pages/check-alpha.md
+      - tutorial_pages/check-power.md   
+      - tutorial_pages/simulate-for-preregistration.md
+      - tutorial_pages/general-structure.md
+      - tutorial_pages/limitations.md
+      - tutorial_pages/real-life-example.md
+      - tutorial_pages/resources.md
+      
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+

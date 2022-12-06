@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.640">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Simulations-for-Power-Analyses – check-power</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">(Untitled)</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Simulations-for-Power-Analyses</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/definition.html" class="sidebar-item-text sidebar-link">Definition</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/basic-principles.html" class="sidebar-item-text sidebar-link">Basic principles</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/repeat.html" class="sidebar-item-text sidebar-link">Repetition</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/seed.html" class="sidebar-item-text sidebar-link">Setting the seed</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/sample-size-n.html" class="sidebar-item-text sidebar-link">Sample size <code>n</code></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/dry-rule.html" class="sidebar-item-text sidebar-link"><strong>D</strong>o not <strong>R</strong>epeat <strong>Y</strong>ourself - DRY rule</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/check-alpha.html" class="sidebar-item-text sidebar-link">Using simulations to check alpha</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/check-power.html" class="sidebar-item-text sidebar-link active">Checking power through simulations</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/simulate-for-preregistration.html" class="sidebar-item-text sidebar-link">Simulating data to check or preregister code</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/general-structure.html" class="sidebar-item-text sidebar-link">General structure of a simulation</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/limitations.html" class="sidebar-item-text sidebar-link">Limitations to simulations</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../tutorial_pages/real-life-example.html" class="sidebar-item-text sidebar-link">Real life example</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#checking-power-through-simulations" id="toc-checking-power-through-simulations" class="nav-link active" data-scroll-target="#checking-power-through-simulations">Checking power through simulations</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="checking-power-through-simulations" class="level1">
+<h1>Checking power through simulations</h1>
+<p>The power of a statistical test tells us the probability that the test correctly rejects the null hypothesis. In other words, if we only examine true effects, the power is the proportion of tests that will (correctly) reject the null hypothesis. Often, the power is set to <code>0.8</code>, though, as with <code>alpha = 0.05</code>, this is an arbitrary choice.</p>
+<p>Generally, we want to do power analysis before collecting data, to work out the sample size we need to detect some effect. If we are calculating a required sample size, the power analysis can also be called a sample size calculation.</p>
+<p>Taking the example of a t-test, we need to understand a few parameters:</p>
+<ul>
+<li><code>n</code>, the sample size</li>
+<li><code>delta</code>, the difference in means that you want to be able to detect. Deciding what this value should be is tricky. You might rely on estimates from the literature (though bear in mind they are likely to be inflated), or you can use a ‘minimally important difference’: you specify the threshold below which you do not think a difference is interesting enough to be worth detecting. In a clinical trial, this might be the smallest difference that a patient would care about, for example.</li>
+<li><code>sd</code>, the standard deviation. Usually this needs to be estimated from the literature or from pilot studies.</li>
+<li><code>sig.level</code>, the alpha, as discussed previously.</li>
+<li><code>power</code>, the power as defined above.</li>
+</ul>
+<p>You can calculate any one of these parameters, given all of the others. We usually want to specify, <code>delta</code>, <code>sd</code>, <code>sig.level</code> and <code>power</code> and calculate the required sample size.</p>
+<p>We can calculate the required sample size for a t.test using: <code>power.t.test(n = NULL, delta = 0.5, sd = 1, sig.level = 0.05, power = 0.8)</code></p>
+<p>Notice that <code>n = NULL</code>, so this parameter is calculated.</p>
+<p>The sample size <code>n</code> we need given this set of parameters, is <code>64</code> per group.</p>
+<p>Just as we can check the alpha of our test by sampling from the same distribution (i.e.&nbsp;simulating data without an effect), we can check the power by sampling from different distributions (i.e.&nbsp;simulating data with an effect).</p>
+<p>If we sample values from two normal ditributions with different means (e.g.&nbsp;N(0,1) and N(0.5,1)), what is the minimum sample size we need to detect a significant difference in means with a t.test, 80% of the time?</p>
+<hr>
+<p><strong>YOUR TURN:</strong><br>
+Use your simulation skills to work out the power through simulation. Write a function which:</p>
+<ol type="1">
+<li><p>Draws <code>n</code> values from a random normal distribution with <code>mean1</code>, and another <code>n</code> values from a normal distribution with <code>mean2</code></p></li>
+<li><p>Compares the means of these two samples with a t-test and extracts the p.value</p></li>
+</ol>
+<p>Replicate the function 1000 times using the parameters used in the power calculation above (that used the <code>power.t.test</code> function)</p>
+<p>Calculate the proportion of p-values that are &lt;0.05</p>
+<hr>
+<p><strong>p-values of t tests comparing means from 1000 sims N(0,1) and N(0.5, 1) with n=64</strong></p>
+<p><br> <img src="../assets/hist-power.png" width="500"><br>
+<br></p>
+<p>The proportion of correctly rejected null hypotheses in the simulation is close to <code>0.8</code>, which is what we would expect.</p>
+<p>Using simulations for power analysis is not really necessary for simple examples like a t-test, though it is useful to check your understanding.</p>
+<p>When analyses become complex and it is hard or impossible to determine a sample size analytically (i.e.&nbsp;you can’t calculate it, or there’s no suitable function to use), then simulations are an indispensible tool.</p>
+<p>A simple example of a power analysis like the one you’ve just done can be found in the “Power analysis” section of this paper: * Blanco, David, et al (2020). “Effect of an editorial intervention to improve the completeness of reporting of randomised trials: a randomised controlled trial.” BMJ open 10.5: e036799. <a href="https://doi.org/10.1136/bmjopen-2020-036799" target="_blank">https://doi.org/10.1136/bmjopen-2020-036799</a></p>
+<hr>
+<p><a href="../tutorial_pages/check-alpha.html">Previous</a> | <a href="../tutorial_pages/simulate-for-preregistration.html">Next</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
