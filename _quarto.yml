@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "Simulations-for-Power-Analyses"
+  title: "Simulations for Power Analyses"
   sidebar:
     style: "docked"
     search: true
